@@ -49,3 +49,4 @@ end
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'omniauth-twitter'
