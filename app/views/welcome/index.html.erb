@@ -3,4 +3,5 @@
   <img src="<%= current_user.image_url %>">
 <% else %>
 <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
 <% end %>
