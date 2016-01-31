@@ -19,6 +19,8 @@
 #  uid                    :string
 #  name                   :string
 #  image_url              :string
+#  oauth_token            :string
+#  oauth_secret           :string
 #
 # Indexes
 #
@@ -53,6 +55,8 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.image_url = auth.info.image
       user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_secret = auth.credentials.secret
     end
   end
 
