@@ -50,3 +50,4 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"
