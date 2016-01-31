@@ -9,6 +9,11 @@
 <body>
 <div class="container">
 	<%= render "shared/header" %>
+  <% flash.each do |key, message| %>
+  <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>" role="alert">
+    <%= message %>
+  </div>
+  <% end %>
 	<%= yield %>
 </div>
 
