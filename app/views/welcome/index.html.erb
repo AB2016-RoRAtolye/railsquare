@@ -1,9 +1,5 @@
-<% if user_signed_in? %>
-  <%= current_user.name %>
-  <img src="<%= current_user.image_url %>">
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<% else %>
-<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
-<%= link_to "Sign in with Google+", user_omniauth_authorize_path(:google_oauth2) %>
-<% end %>
+<div class="jumbotron">
+  <h1>Jumbotron heading</h1>
+  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+</div>
