@@ -1,0 +1,21 @@
+<div id='map' style="height: 400px;">
+
+</div>
+
+<script>
+function initMap() {
+  var myLatLng = {lat: <%= @venue.latitude %>, lng: <%= @venue.longitude %>};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: myLatLng
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map
+  });
+}
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_EYrj_hd3d7f5vTF2leqc7wLxEcdVHw&signed_in=true&callback=initMap"></script>
