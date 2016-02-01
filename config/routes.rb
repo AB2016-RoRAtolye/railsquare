@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root 'welcome#index'
+  get "offer" => "venues#offer"
 end

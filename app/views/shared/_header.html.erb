@@ -2,6 +2,7 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       <% if current_user %>
+        <li role="presentation"><%= link_to "Find Me!", offer_path, remote: true %></li>
         <li role="presentation"><a href="#"><%= current_user.name %></a></li>
         <li role="presentation"><a href="#"><img src="<%= current_user.image_url %>"></a></li>
         <li role="presentation"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
