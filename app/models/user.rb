@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   has_many :check_ins
+  has_many :followers, class_name: "Follow", foreign_key: :following_id
+  has_many :followings, class_name: "Follow", foreign_key: :follower_id 
 
   def self.from_facebook_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
