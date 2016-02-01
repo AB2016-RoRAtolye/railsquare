@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  resources :venues, only: [:show, :new, :create] do
+    resources :check_ins, only: [:create]
+  end
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  ActiveAdmin.routes(self)
+  devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
+  # get '/users/auth/google_oauth2/callback' => 'omniauth_callbacks#google_oauth2'
   root 'welcome#index'
 end

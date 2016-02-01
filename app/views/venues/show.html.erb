@@ -1,0 +1,92 @@
+<%= @venue.name %>
+
+<div id="map" style="height: 400px;"></div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Check-In
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Check-In</h4>
+      </div>
+
+      <%= form_for CheckIn.new, url: venue_check_ins_path(@venue) do |f| %>
+          <div class="modal-body">
+            <%= f.file_field :image %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit class: 'btn btn-primary' %>
+            <!--<button type="submit" class="btn btn-primary">Save changes</button>-->
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<h2>Check-Ins</h2>
+<div class="row">
+  <div class="col-md-4">
+
+  </div>
+</div>
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <% @venue.check_ins.each_with_index do |check_in, index| %>
+
+        <div class="item <%= index == 0 ? 'active' : '' %>">
+          <div class="carousel-image-container">
+            <%= image_tag check_in.image %>
+          </div>
+
+          <div class="carousel-caption">
+            <%= index %> <%= check_in.user.email %>
+          </div>
+
+        </div>
+    <% end %>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+<script>
+    function initMap() {
+        var myLatLng = {lat: <%= @venue.latitude %>, lng: <%= @venue.longitude %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6_EYrj_hd3d7f5vTF2leqc7wLxEcdVHw&signed_in=true&callback=initMap"></script>

@@ -2,14 +2,22 @@
 <html>
 <head>
   <title>Railsquare</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
-	<%= render "shared/header" %>
-	<%= yield %>
+  <%= render "shared/header" %>
+
+  <% flash.each do |key, message| %>
+      <div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <%= message %>
+      </div>
+  <% end %>
+
+  <%= yield %>
 </div>
 
 </body>
