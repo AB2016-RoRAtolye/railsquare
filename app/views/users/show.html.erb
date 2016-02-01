@@ -1,3 +1,12 @@
+<% if current_user != @user %>
+  <% if !current_user.following_ids.include?(@user.id) %>
+    <%= link_to "Follow", follow_user_path(@user), method: :post %>
+  <% else %>
+    <%= link_to "Unfollow", unfollow_user_path(@user), method: :post %>
+  <% end %>
+<% end %>
+
+
 <div class="row marketing">
 	<h3>Beğenilen Mekanlar</h3>
   <% @likes.each do |like| %>

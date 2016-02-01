@@ -35,11 +35,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   has_many :check_ins
+  has_many :likes
+
   has_many :follower_users, class_name: "Follow", foreign_key: "following_id", dependent: :destroy
-  has_many :followers, through: :follower_users, source: :follower 
+  has_many :followers, through: :follower_users#, source: :follower
+
+
   has_many :following_users, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :following_users, source: :followed
-  has_many :likes
+
+
 
   def self.from_facebook_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -82,5 +87,13 @@ class User < ActiveRecord::Base
 
   def liked_venue?(venue)
     likes.where(venue_id: venue.id).present?
+  end
+
+  def follow(follower)
+    followers << follower
+  end
+
+  def unfollow(follower)
+    followers.destroy(follower)
   end
 end

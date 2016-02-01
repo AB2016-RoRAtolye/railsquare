@@ -14,5 +14,11 @@ Rails.application.routes.draw do
 
   get "like/:venue_id" => "likes#create", as: "likes"
 
-  resources :users
+  resources :users do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
+
 end
