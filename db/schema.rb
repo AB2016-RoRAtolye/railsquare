@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160131200009) do
     t.integer  "venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -83,6 +84,8 @@ ActiveRecord::Schema.define(version: 20160131200009) do
     t.string   "uid"
     t.string   "name"
     t.string   "image_url"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

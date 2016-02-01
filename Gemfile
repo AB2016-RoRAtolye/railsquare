@@ -53,3 +53,6 @@ gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 gem 'activeadmin', github: 'activeadmin'
 gem 'geocoder'
+gem 'carrierwave'
+gem 'annotate', github: 'ctran/annotate_models'
+gem 'twitter'
