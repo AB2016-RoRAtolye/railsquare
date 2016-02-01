@@ -16,7 +16,7 @@ class CheckIn < ActiveRecord::Base
 
 	mount_uploader :image, ImageUploader
 
-	after_create :sent_twit!
+	#after_create :sent_twit!
 
 	def sent_twit!
 		if user.provider == "twitter"

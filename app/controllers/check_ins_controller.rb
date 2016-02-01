@@ -4,9 +4,10 @@ class CheckInsController < ApplicationController
 
   def create
     @check_in = current_user.check_ins.new(check_in_params)
+    venue = @check_in.venue
     @check_in.save
 
-    render 'venues/show'
+    @venues = Venue.near([venue.latitude, venue.longitude], 2000, units: :km)
   end
 
   private

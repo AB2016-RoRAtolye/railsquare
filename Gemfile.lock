@@ -236,6 +236,7 @@ GEM
       polyamorous (~> 1.2)
     rdoc (4.2.1)
       json (~> 1.4)
+    remotipart (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.21)
@@ -310,6 +311,7 @@ DEPENDENCIES
   omniauth-twitter
   pry-byebug
   rails (= 4.2.5.1)
+  remotipart (~> 1.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

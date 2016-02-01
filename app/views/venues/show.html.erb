@@ -7,6 +7,9 @@
   Check-In
 </button>
 
+<div class="row marketing venues">
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -16,7 +19,7 @@
         <h4 class="modal-title" id="myModalLabel">Check-In</h4>
       </div>
 
-      <%= form_for CheckIn.new, url: venue_check_ins_path(@venue) do |f| %>
+      <%= form_for CheckIn.new, url: venue_check_ins_path(@venue), remote: true do |f| %>
         <div class="modal-body">
           <%= f.file_field :image %>
         </div>
