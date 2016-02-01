@@ -1,2 +1,3 @@
 $("#myModal").modal("toggle");
 $(".venues").html("<%= j raw render('venues/venues') %>");
+$(".check-button").html('<button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>Checked<span class="badge"><%= j raw @total_check_ins.to_s %></span></button>');

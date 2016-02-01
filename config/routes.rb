@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   get 'likes/create'
 
   resources :venues, only: [:show, :new, :create] do
@@ -11,4 +13,6 @@ Rails.application.routes.draw do
   get "offer" => "venues#offer"
 
   get "like/:venue_id" => "likes#create", as: "likes"
+
+  resources :users
 end

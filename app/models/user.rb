@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
   has_many :followers, class_name: "Follow", foreign_key: :following_id
   has_many :followings, class_name: "Follow", foreign_key: :follower_id 
   has_many :likes
-  has_many :venues, through: :likes
 
   def self.from_facebook_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -69,16 +68,17 @@ class User < ActiveRecord::Base
     user = User.where(:email => data["email"]).first
 
     # Uncomment the section below if you want users to be created if they don't exist
-    # unless user
-    #     user = User.create(name: data["name"],
-    #        email: data["email"],
-    #        password: Devise.friendly_token[0,20]
-    #     )
-    # end
+    unless user
+      user = User.create(name: data["name"], email: data["email"],password: Devise.friendly_token[0,20])
+    end
     user
   end
 
   def checked_venue?(venue)
     check_ins.where(venue_id: venue.id).present?
+  end
+
+  def liked_venue?(venue)
+    likes.where(venue_id: venue.id).present?
   end
 end

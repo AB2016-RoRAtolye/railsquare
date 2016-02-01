@@ -38,6 +38,14 @@ class CheckIn < ActiveRecord::Base
 		end
 	end
 
+	def venue_name
+		venue.name
+	end
+
+	def venue_address
+		venue.address
+	end
+
 	private
 
 	def twitter_client

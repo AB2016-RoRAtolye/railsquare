@@ -1,6 +1,6 @@
-<div class="col-lg-6">
-	<% @venues.each do |venue| %>
+<% @venues.each do |venue| %>
+	<div class="col-md-6 col-offset-3">
     <h4><%= link_to venue.name, venue_path(venue) %></h4>
     <p><%= venue.address %></p>
-  <% end %>
-</div>
+  </div>
+<% end %>

@@ -7,6 +7,7 @@ class CheckInsController < ApplicationController
     venue = @check_in.venue
     @check_in.save
 
+    @total_check_ins = venue.check_ins.size
     @venues = Venue.near([venue.latitude, venue.longitude], 2000, units: :km)
   end
 

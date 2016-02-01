@@ -14,4 +14,12 @@ class Like < ActiveRecord::Base
 	belongs_to :venue
 
 	validates :user_id, uniqueness: { scope: :venue_id }
+
+	def venue_name
+		venue.name
+	end
+
+	def venue_address
+		venue.address
+	end
 end
