@@ -35,8 +35,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   has_many :check_ins
-  has_many :followers, class_name: "Follow", foreign_key: :following_id
-  has_many :followings, class_name: "Follow", foreign_key: :follower_id 
+  has_many :follower_users, class_name: "Follow", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, through: :follower_users, source: :follower 
+  has_many :following_users, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :following_users, source: :followed
   has_many :likes
 
   def self.from_facebook_omniauth(auth)

@@ -20,18 +20,20 @@
 
 <div class="row marketing">
 	<h3>Takipçiler</h3>
-  <% @followers.try(:each) do |follow| %>
+  <% @followers.try(:each) do |user| %>
 		<div class="col-md-6">
-    	<h4><%= link_to follow.follower_name, user_path(follow.follower) %></h4>
+    	<h4><%= link_to user.name, user_path(user) %></h4>
+    	<p><%= user.email %></p>
     </div>
 	<% end %>
 </div>
 
 <div class="row marketing">
 	<h3>Takip Edilenler</h3>
-  <% @followings.try(:each) do |follow| %>
+  <% @followings.try(:each) do |user| %>
 		<div class="col-md-6">
-    	<h4><%= link_to follow.following_name, user_path(follow.following) %></h4>
+    	<h4><%= link_to user.name, user_path(user) %></h4>
+    	<p><%= user.email %></p>
     </div>
 	<% end %>
 </div>

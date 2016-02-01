@@ -6,6 +6,6 @@ class UsersController < ApplicationController
   	@likes = @user.likes
   	@check_ins = @user.check_ins
   	@followers = @user.followers
-  	@followings = @user.followings
+  	@followings = @user.following
   end
 end
