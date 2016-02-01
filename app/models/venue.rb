@@ -22,4 +22,11 @@ class Venue < ActiveRecord::Base
 	after_validation :geocode
 
 	validates :name, presence: true
+
+	include PgSearch
+	pg_search_scope :search, :against => [:name, :address],
+									:using => {
+											:tsearch => {:prefix => true}
+									}
+	pg_search_scope :search_by_name, :against => [:name]
 end

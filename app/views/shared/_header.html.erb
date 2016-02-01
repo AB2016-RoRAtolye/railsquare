@@ -2,6 +2,13 @@
   <nav>
     <ul class="nav nav-pills pull-right">
       <% if current_user %>
+          <li>
+            <%= form_tag search_venues_path do  %>
+              <%= text_field_tag :q %>
+
+              <%= button_tag "Send" %>
+            <% end %>
+          </li>
         <li role="presentation"><%= link_to "Find Me!", offer_path, remote: true %></li>
         <li role="presentation" class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %><span class="caret"></span>

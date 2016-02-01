@@ -26,6 +26,10 @@ class VenuesController < ApplicationController
     @venues = Venue.near([39.998, 32.8799], 10, units: :km)
   end
 
+  def search
+    @venues = Venue.search(params[:q])
+  end
+
   private
     def venue_params
       params.require(:venue).permit(:name, :address, :category_id)
