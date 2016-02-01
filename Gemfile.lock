@@ -201,6 +201,7 @@ GEM
     pry-byebug (3.3.0)
       byebug (~> 8.0)
       pry (~> 0.10)
+    puma (2.12.3)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -316,6 +317,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   pry-byebug
+  puma
   rails (= 4.2.5.1)
   rails_12factor
   remotipart (~> 1.2)
