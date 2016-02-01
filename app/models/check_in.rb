@@ -14,6 +14,8 @@ class CheckIn < ActiveRecord::Base
 	belongs_to :venue
 	belongs_to :user
 
+	validates :user_id, uniqueness: { scope: :venue_id }
+
 	mount_uploader :image, ImageUploader
 
 	#after_create :sent_twit!

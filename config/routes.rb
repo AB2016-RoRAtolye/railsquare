@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
   resources :venues, only: [:show, :new, :create] do
     resources :check_ins, only: [:create]
   end
@@ -7,4 +9,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   root 'welcome#index'
   get "offer" => "venues#offer"
+
+  get "like/:venue_id" => "likes#create", as: "likes"
 end

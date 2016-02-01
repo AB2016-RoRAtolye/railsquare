@@ -1,13 +1,13 @@
 <div class="jumbotron">
   <h1>Railsquare</h1>
-  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+  <p class="lead">Dünyada herhangi bir şehirde yemek, içmek, alışveriş yapmak veya ziyaret etmek için en iyi mekanları bul. Yerel uzmanlardan 75 milyonun üzerinde tavsiyeye ulaş.</p>
   <%= link_to 'New Venue', new_venue_path, class: 'btn btn-lg btn-success', role: 'button' %>
 </div>
 <div class="row marketing venues">
-  <div class="col-lg-6">
-  	<% Venue.find_each do |venue| %>
-	    <h4><%= link_to venue.name, venue_path(venue) %></h4>
-	    <p><%= venue.address %></p>
-	  <% end %>
-  </div>
+  <% Venue.find_each do |venue| %>
+		<div class="col-md-6 col-offset-3">
+    	<h4><%= link_to venue.name, venue_path(venue) %></h4>
+    	<p><%= venue.address %></p>
+    </div>
+	<% end %>
 </div>

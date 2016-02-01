@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   has_many :check_ins
   has_many :followers, class_name: "Follow", foreign_key: :following_id
   has_many :followings, class_name: "Follow", foreign_key: :follower_id 
+  has_many :likes
+  has_many :venues, through: :likes
 
   def self.from_facebook_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -74,5 +76,9 @@ class User < ActiveRecord::Base
     #     )
     # end
     user
-end
+  end
+
+  def checked_venue?(venue)
+    check_ins.where(venue_id: venue.id).present?
+  end
 end

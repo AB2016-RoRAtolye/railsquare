@@ -15,6 +15,8 @@
 class Venue < ActiveRecord::Base
 	belongs_to :category
 	has_many :check_ins
+	has_many :likes
+	has_many :users, through: :likes
 
 	geocoded_by :address
 	after_validation :geocode
