@@ -125,6 +125,9 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -241,6 +244,10 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    raygun4ruby (1.1.9)
+      httparty (~> 0.11)
+      json
+      rack
     rdoc (4.2.1)
       json (~> 1.4)
     remotipart (1.2.1)
@@ -320,6 +327,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.5.1)
   rails_12factor
+  raygun4ruby
   remotipart (~> 1.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
