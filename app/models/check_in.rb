@@ -25,7 +25,9 @@ class CheckIn < ActiveRecord::Base
                                        File.open(image.file.file),
                                        {
                                            lat: venue.latitude,
-                                           long: venue.longitude
+                                           long: venue.longitude,
+                                           display_coordinates: true,
+                                           name: venue.name
                                        })
     end
   end
