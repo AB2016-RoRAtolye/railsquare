@@ -61,3 +61,4 @@ gem 'twitter'
 gem 'remotipart', '~> 1.2'
 gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'raygun4ruby'
