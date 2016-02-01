@@ -14,6 +14,6 @@ class Follow < ActiveRecord::Base
 	belongs_to :following, foreign_key: :following_id, class_name: 'User'
 
 	validates :following_id, uniqueness: { scope: :follower_id }
-	validate :follower_id, presence: true
-	validate :following_id, presence: true
+	validates :follower_id, presence: true
+	validates :following_id, presence: true
 end
