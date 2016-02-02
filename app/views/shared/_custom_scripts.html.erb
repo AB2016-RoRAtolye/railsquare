@@ -1,0 +1,14 @@
+<script>
+  window.dispatcher = window.dispatcher || new WebSocketRails(window.document.location.host + "/websocket");
+
+  var channel = dispatcher.subscribe('follow');
+
+  channel.bind('success', function(user) {
+    var followed_id = user.id;
+    var current_user_id = <%= current_user.try(:id) %>;
+
+    if(followed_id === current_user_id) {
+      $( '<div class="alert alert-success" role="alert">You are followed!! YAY</div>' ).insertAfter( ".header" );
+    }
+  });
+</script>

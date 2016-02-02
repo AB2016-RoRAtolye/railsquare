@@ -91,6 +91,7 @@ class User < ActiveRecord::Base
 
   def follow(follower)
     followers << follower
+    WebsocketRails[:follow].trigger(:success, self)
   end
 
   def unfollow(follower)
