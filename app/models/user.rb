@@ -100,6 +100,6 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_mail
-    UserMailer.welcome(self).deliver_now
+    WelcomeMailJob.perform_later(id)
   end
 end

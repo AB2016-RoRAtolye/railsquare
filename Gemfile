@@ -65,3 +65,5 @@ gem 'raygun4ruby'
 gem 'websocket-rails', git: 'https://github.com/inventionlabsSydney/websocket-rails', branch: 'eventmachine-redis-lock'
 gem 'faye-websocket', '0.10.0'
 gem "letter_opener", :group => :development
+gem "sidekiq"
+gem 'sinatra', :require => nil
