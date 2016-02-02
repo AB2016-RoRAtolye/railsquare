@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
   has_many :following_users, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :following_users, source: :followed
 
+  after_create :send_welcome_mail
 
 
   def self.from_facebook_omniauth(auth)
@@ -96,5 +97,9 @@ class User < ActiveRecord::Base
 
   def unfollow(follower)
     followers.destroy(follower)
+  end
+
+  def send_welcome_mail
+    UserMailer.welcome(self).deliver_now
   end
 end
