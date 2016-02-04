@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.8'
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -64,3 +64,6 @@ gem 'thin'
 gem 'raygun4ruby'
 gem 'websocket-rails', git: 'https://github.com/inventionlabsSydney/websocket-rails', branch: 'eventmachine-redis-lock'
 gem 'faye-websocket', '0.10.0'
+gem "letter_opener", :group => :development
+gem "sidekiq"
+gem 'sinatra', :require => nil
